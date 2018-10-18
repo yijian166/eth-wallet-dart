@@ -15,7 +15,10 @@ class MnemonicUtils {
   static List<String> WORD_LIST = null;
 
   /// Generate the mnemonic string list from an secure initial entropy data
-  static String generateMnemonic(Uint8List initialEntropy) {
+  static String generateMnemonic(Uint8List initialEntropy, {List<String> wordList}) {
+    if (wordList != null && wordList.isNotEmpty) {
+      WORD_LIST = wordList;
+    }
     if (WORD_LIST == null) {
       WORD_LIST = populateWordList();
     }
